@@ -23,6 +23,27 @@
                 <td>{{product.name}}</td>
                 <td>{{product.amount}}</td>
                 <td>{{product.description}}</td>
+                <td>
+                    <a href="delete-product/{{product.id}}">
+                        <button>
+                            Hapus Barang
+                        </button>
+                    </a>
+                </td>
+                <td>
+                    <a href="add-product-by-one/{{product.id}}">
+                        <button>
+                            +
+                        </button>
+                    </a>
+                </td>
+                <td>
+                    <a href="reduce-product-by-one/{{product.id}}">
+                        <button>
+                            -
+                        </button>
+                    </a>
+                </td>
             </tr>
         {% endfor %}
     </table>
@@ -34,4 +55,12 @@
             Add New Product
         </button>
     </a>
+
+    <a href="{% url 'main:logout' %}">
+        <button>
+            Logout
+        </button>
+    </a>
+
+    <h5>Sesi terakhir login: {{ last_login }}</h5>
 {% endblock content %}
