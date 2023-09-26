@@ -79,3 +79,34 @@
 
 **Bonus**
 * Telah ditambahkan tulisan dalam file `HTML` yang menyatakan jumlah data yang sudah pernah di input ke dalam form.
+<br>
+<br>
+
+## Tugas 4
+**1. Apa itu Django `UserCreationForm`, dan jelaskan apa kelebihan dan kekurangannya?**
+* Django `UserCreationForm` adalah form template bawaan dari Django yang berguna untuk membuat/mendaftarkan user baru pada web. Karena `UserCreationForm` merupakan form yang dibuat khusus untuk pendaftaran oleh Django, form tersebut memiliki beberapa kelebih dan kekurangan tersendiri.
+* `UserCreationForm` sangat mudah digunakan untuk mendaftarkan user baru dan memiliki fungsi-fungsi _built-in_ sehingga developer tidak perlu membuatnya lagi dan bisa langsung terhubung dengan bagian `Model`. Selain itu `UserCreationForm` juga mudah untuk dikustomisasi untuk menyesuaikan data-data yang perlu diambil dari user.
+* `UserCreationForm` memiliki beberapa kekurangan, salah satunya adalah keterbatasan dalam fungsionalitas. Hal ini dikarenakan `UserCreationForm` sudah dibuat dan diperuntukkan untuk mendaftarkan user baru pada web sehingga fungsi-fungsi bawaanya juga berhubungan dengan proses pendaftaran user baru saja. Selain itu, `UserCreationForm` terkadang tidak bisa digunakan karena tidak sesuai dengan kebutuhan developer. Beberapa kasus pendaftaran user baru dalam web membutuhkan fitur-fitur yang tidak dimiliki `UserCreationForm` sehingga developer terpaksa memakai form biasa dan membuat fungsi-fungsi nya sendiri.
+
+**2. Apa perbedaan antara autentikasi dan otorisasi dalam konteks Django, dan mengapa keduanya penting?**
+* Dalam Django, proses autentikasi dan otorisasi merupakan dua proses yang mirip dan seringkali dilakukan di saat yang sama. Meskipun begitu, autentikasi dan otorisasi memiliki definisi dan konsep berbeda yang penting dalam pemrograman web.
+* Autentikasi adalah proses yang dilakukan sebelum otorisasi. Pada proses ini, server web melakukan pengecekan dan memastikan bahwa indentitas dari user merupakan orang yang benar. Proses autentikasi ini bisa dilakukan melalui input `username` dan `password` atau data pribadi lainnya.
+* Setelah proses autentikasi dilakukan, server web bisa melakukan proses otorisasi yaitu pemberian akses data maupun fungsi terhadap user-user tertentu. Proses ini adalah proses yang memperbolehkan kita mengakses hal-hal pribadi yang hanya bisa diakses oleh akun kita. Dengan adanya proses ini, server web bisa membatasi kebebasan akses dari user-user webnya serta memberikan otorisasi pada developer untuk memakai fungsi-fungsi tertentu.
+
+**3. Apa itu cookies dalam konteks aplikasi web, dan bagaimana Django menggunakan cookies untuk mengelola data sesi pengguna?**
+* Cookies adalah data-data yang disimpan tentang aktivitas user yang bisa digunakan untuk berbagai hal seperti mengolah data, dan mempertahankan autentikasi user. Django menyimpan cookies dari user pada setiap waktu user melakukan login sampai melakukan logout kembali. Waktu dari proses login hingga logout sering disebut sebagai `session`. Cookies digunakan untuk memberikan kenyamanan dan kemudahan dalam proses interaksi antar user dengan web sehingga user tidak perlu menginput `username` dan `password` berkali-kali setiap melakukan perpindahan halaman.
+
+**4. Apakah penggunaan cookies aman secara default dalam pengembangan web, atau apakah ada risiko potensial yang harus diwaspadai?**
+* Tujuan utama cookies adalah untuk memberikan kenyamanan terhadap pengguna dalam proses interaksi dengan web sehingga tidak perlu melakukan login berkali-kali. Namun, cookie memberikan kekurangan dalam keamanan karena proses autentikasi dan otorisasi dilakukan oleh sistem langsung sehingga memberikan potensi ancaman adanya pengambilan data. Kekurangan ini memberikan ancaman serangan yang biasa disebut sebagai `session hijacking` dimana _hacker_ mendapatkan cookie dari user yang sedang login sehingga ia mampu mengotorisasi dirinya sendiri sebagai pemilik session tersebut. Oleh karena itu, pemakaian cookie harus dijaga dan diregulasi dengan benar baik dari pihak browser client maupun dari pihak server web.
+
+**5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).**
+* Untuk membuat web memiliki fungsi registrasi, saya menambahkan page baru khusus untuk melakukan registrasi yang bernama `register.html`. Dari situ saya memanfaatkan fitur `UserCreationForm` dari Django untuk membuat user baru dan menyimpannya dalam database. Untuk menjalankan proses penyimpanan dan verifikasi form, saya membuat fungsi `register` pada `views.py`.
+* Untuk membuat fitur login, saya juga membuat page khusus untuk login bernama `login.html` yang berisi form dan button yang melakukan HTTP request `POST`. Saya memanfaatkan fitur `authenticate` dari Django sehingga proses autentikasi user bisa dilakukan dengan mudah. Library `messages` pada Django juga saya gunakan untuk memberikan informasi kembali bila ada masalah dalam proses login user.
+* Untuk membuat fitur logout, saya hanya menambahkan button pada halaman utama `main.html` yang menjalankan fungsi `logout`. Fungsi `logout` hanya memanfaatkan fungsi bawaan dari Django yang bisa langsung menglogout user yang melakukan request.
+* Setelah itu, saya memberikan fitur `login_required` dimana user harus terlebih dahulu melakukan login untuk bisa mengakses halaman utama `main.html`. Fitur ini hanya perlu diimport dari library Django dan menambahkan `@login_required(login_url='/login')` diatas fungsi `show_main` yang berfungsi untuk memindahkan user yang belum melakukan login ke halaman login.
+* Setelah itu saya menambahkan fitur cookie yang menyimpan sesi login terakhir user pada web. Fitur tersebut bisa diimplementasikan dengan method `set_cookie` yang bisa kita kustomisasi nilainya setiap kali user melakukan login. Setelah itu, saya melakukan `delete_cookie` ketika user melakukan logout.
+* Karena user sekarang harus terlebih dahulu melakukan login sebelum bisa mengakses halaman utama, kita bisa memisahkan akses data untuk setiap user agar mereka hanya bisa melihat data mereka masing-masing. Untuk melakukan hal tersebut, saya menambahkan variabel `user` pada model yang merupakan `ForeignKey` pada data produk sehingga pembuat produk tersebut bisa diidentifikasi. Setelah itu penampilan produk dibatasi untuk hanya menampilkan produk yang dibuat user tersebut dengan kode `products = Product.objects.filter(user=request.user)`.
+
+**Bonus**
+* Telah ditambahkan tombol yang bisa menghapus sebuah produk dari catatan.
+* Telah ditambahkan dua tombol yang bisa menambahkan dan mengurangi jumlah produk sebanyak satu buah.
