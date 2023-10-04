@@ -110,3 +110,27 @@
 **Bonus**
 * Telah ditambahkan tombol yang bisa menghapus sebuah produk dari catatan.
 * Telah ditambahkan dua tombol yang bisa menambahkan dan mengurangi jumlah produk sebanyak satu buah.
+
+## Tugas 5
+**1. Jelaskan manfaat dari setiap element selector dan kapan waktu yang tepat untuk menggunakannya.**
+
+Terdapat beberapa _element selector_ dalam css yang berguna untuk berbagai macam keperluan. Di antaranya terdapat _element selector_ yang paling sering digunakan, yaitu:
+* **Element Selector**: Selector yang memilih seluruh element HTML yang sama dan menerapkan style pada seluruh element tersebut. Selector ini termasuk dalam salah satu selector yang tidak spesifik jika dibandingkan dengan selector lainnya.
+* **Class Selector**: Selector yang memilih seluruh element yang dikategorikan dalam class yang sama. Selector ini lebih spesifik dan lebih diutamakan dibandingkan _element selector_.
+* **ID Selector**: Selector yang memilih seluruh element dengan id yang sama. Meskipun _class_ dan _id_ mirip dalam penggunaan, _id selector_ lebih diutamakan dibandingkan _class selector_.
+
+**2. Jelaskan HTML5 Tag yang kamu ketahui.**
+* header: Elemen yang digunakan untuk menampilkan judul atau tulisan utama dari suatu website.
+* nav: Elemen yang digunakan untuk menampilkan bagian navigasi dari sebuah website.
+* p: Elemen yang berisi konten paragraf dari sebuah website.
+* input: Elemen yang digunakan untuk menerima input atau melakukan method post pada form
+* form: Elemen yang digunakan untuk menyimpan data yang akan dikirimkan user ke server.
+* button: Elemen tombol yang bisa disambungkan dengan fungsi-fungsi tertentu oleh pembuat website.
+* a: Elemen yang menyimpan link.
+* span & div: Elemen yang bisa digunakan untuk mengandung elemen lain.
+
+**3. Jelaskan perbedaan antara margin dan padding.**
+Dalam box model yang dianut oleh CSS, setiap elemen memiliki sebuah padding, border, dan margin. Padding adalah jarak dari konten elemen terhadap border, sedangkan margin adalah jarak dari border ke elemen lainnya.
+
+**4. Jelaskan perbedaan antara framework CSS Tailwind dan Bootstrap. Kapan sebaiknya kita menggunakan Bootstrap daripada Tailwind, dan sebaliknya?**
+Tailwind dan Bootstrap adalah framework CSS yang cukup populer digunakan pada saat ini. Namun, kegunaan framework Tailwind dan Bootstrap biasanya berbeda tergantung dengan kebutuhan pembuat website. Framework Bootstrap biasa digunakan untuk membuat website dengan lebih mudah tanpa banyak kustomisasi sehingga proses pembuatan website bisa lebih mudah dan instan, namun tidak memiliki banyak ruang untuk model yang rumit. Sebaliknya, framework Tailwind memberikan lebih banyak ruang untuk kustomisasi, sehingga pembuat website bisa berkreasi dengan lebih bebas. Namun, proses pembuatannya akan memakan waktu dan tenaga yang lebih banyak.
