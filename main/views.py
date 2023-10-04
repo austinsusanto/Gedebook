@@ -120,3 +120,14 @@ def reduce_product_by_one(request, id):
     reduced_product.amount -= 1
     reduced_product.save()
     return HttpResponseRedirect(reverse('main:show_main'))
+
+def edit_product(request, id):
+    product = Product.objects.get(pk=id)
+    form = ProductForm(request.POST or None, instance=Product)
+
+    if form.is_valid() and request.method == "POST":
+        form.save()
+        return HttpResponseRedirect(reverse('main:show_main'))
+
+    context = {'form':form}
+    return render(request, "edit_product.html", context)
