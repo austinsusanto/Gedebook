@@ -110,6 +110,8 @@
 **Bonus**
 * Telah ditambahkan tombol yang bisa menghapus sebuah produk dari catatan.
 * Telah ditambahkan dua tombol yang bisa menambahkan dan mengurangi jumlah produk sebanyak satu buah.
+<br>
+<br>
 
 ## Tugas 5
 **1. Jelaskan manfaat dari setiap element selector dan kapan waktu yang tepat untuk menggunakannya.**
@@ -138,3 +140,25 @@ Tailwind dan Bootstrap adalah framework CSS yang cukup populer digunakan pada sa
 **5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).**
 * Untuk melakukan step step diatas, saya terlebih dulu melakukan penghubungan file `base.html` saya dengan link yang diberikan oleh Bootstrap sehingga seluruh style yang dibuat oleh bootstrap bisa dipakai oleh website saya.
 * Setelah itu, untuk mengubah setiap halam pada website menjadi lebih baik, saya mengikuti dokumentasi yang disediakan pada website bootstrap sehingga posisi dan penampilan dari elemen-elemen yang ada dalam halaman web saya bisa sesuai dengan yang saya inginkan dengan hanya mengedit nama dari atribut `class` sesuai dengan yang Bootstrap sampaikan.
+
+**Bonus**
+* Item terakhir di dalam inventory telah dirubah sehingga memiliki warna yang berbeda dari item-item lainnya.
+<br>
+<br>
+
+## Tugas 6
+**1. Jelaskan perbedaan antara asynchronous programming dengan synchronous programming.**
+Asynchronous dan synchronous programming adalah 2 konsep dalam pemrograman yang memiliki konsep berbeda dalam eksekusi setiap proses. Dalam synchronous programming, setiap proses harus dilakukan satu-per-satu secara berutan sehingga sebuah proses tidak akan dilakukan jika proses sebelumnya belum selesai. Asynchronous programming adalah konsep programming yang tidak harus menjalankan proses secara bersamaan sehingga proses bisa dilakukan secara bersamaan. Kelebihan dari synchronous programming adalah proses pemrograman mudah dimengerti dan dilakukan, namun program akan menjadi relatif lebih lambat. Kelebihan Asynchronous programming adalah program akan berjalan dengan lebih cepat, namun akan lebih sulit untuk melakukan implementasinya.
+
+**2. Dalam penerapan JavaScript dan AJAX, terdapat penerapan paradigma event-driven programming. Jelaskan maksud dari paradigma tersebut dan sebutkan salah satu contoh penerapannya pada tugas ini.**
+Event-driven-programming adalah sebuah paradigma dimana sebuah program akan melakukan proses-proses tergantung dengan kejadian-kejadian (event) yang terjadi. Kejadian-kejadian tersebut bisa memiliki banyak bentuk seperti klik tombol, scroll layar, dll. Pada tugas ini, implementasi event-driven-programming dipakai dalam tombol-tombol yang ada di dalam aplikasi.
+
+**3. Jelaskan penerapan asynchronous programming pada AJAX.**
+Penerapan asynchronous programming dalam AJAX terjadi melalui proses seperti `fetch` yang menggunakan Fetch API sehingga program bisa mendapatkan seluruh data dalam bentuk XML atau JSON yang akan diproses langsung oleh JavaScript yang telah diload sebelumnya. Akibatnya, perubahan-perubahan yang dilakukan oleh JavaScript tidak harus menunggu respons dari server terlebih dahulu dan bisa langsung teraplikasikan di halaman web. Selain itu, AJAX juga akan memberikan respons perubahan pada server web yang tidak terlihat oleh user sehingga data yang telah diubah dalam JavaScript juga berubah dalam server.
+
+**4. Pada PBP kali ini, penerapan AJAX dilakukan dengan menggunakan Fetch API daripada library jQuery. Bandingkanlah kedua teknologi tersebut dan tuliskan pendapat kamu teknologi manakah yang lebih baik untuk digunakan.**
+Fetch API yang digunakan dalam project PBP kali ini memiliki beberapa kelebihan antara lain pemakaian JavaScript murni, lebih ringan, serta memakai konsep promise-based yang memampukan user memakai fungsi-fungsi seperti `then()` dan `catch()`. Sebaliknya, jQuery memiliki kelebihan di bidang-bidang berbeda dari Fetch API. jQuery memiliki kompatibilitas pada browser-browser yang lebih baik dan sintaks-sitaks yang lebih ringkas sehingga lebih mudah untuk diprogram.
+
+**5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).**
+Dalam mengimplementasikan tugas 6, saya melakukan 2 hal secara umum yaitu pengambilan dan pembaruan data dengan JavaScript serta pengiriman data dengan AJAX. Untuk proses pertama, saya mengambil seluruh data yang ada dalam server dan memprosesnya dengan JavaScript. JavaScript akan menampilkan seluruh data yang didapatkan sehingga tidak perlu menunggu respons dari server Django. Untuk proses kedua, saya membuat modal yang digunakan untuk membuat produk baru. Modal tersebut hanya akan tertampilkan jika sebuah tombol "Add Product by AJAX" ditekan. Modal tersebut memiliki sebuah form yang akan melakukan method POST. Namun, proses data pada method POST tidak akan dilakukan seperti biasanya karena akan menggunakan fungsi `fetch()` sehingga list produk yang ada di halaman utama bisa langsung di refresh.
+
