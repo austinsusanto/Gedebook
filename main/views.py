@@ -51,7 +51,7 @@ def create_product_flutter(request):
         new_product = Product.objects.create(
             user = request.user,
             name = data["name"],
-            price = int(data["price"]),
+            amount = int(data["amount"]),
             description = data["description"]
         )
 
@@ -157,7 +157,6 @@ def edit_product(request, id):
 
 def get_product_json(request):
     product_item = Product.objects.all()
-    print(serializers.serialize('json', product_item))
     return HttpResponse(serializers.serialize('json', product_item))
 
 @csrf_exempt
